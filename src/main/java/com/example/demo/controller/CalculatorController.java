@@ -17,7 +17,7 @@ public class CalculatorController {
         this.recordService = recordService;
     }
 
-    @Secured("USER_ROLE")
+
     @RequestMapping(value="v1/operation", method = RequestMethod.POST, consumes = MediaType.APPLICATION_JSON_VALUE, produces = "application/json")
     public ResponseEntity<String> operation(@RequestBody Record record){
         try{

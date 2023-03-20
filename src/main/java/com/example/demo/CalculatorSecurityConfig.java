@@ -22,14 +22,9 @@ public class CalculatorSecurityConfig  {
         UserDetails admin = User.builder()
                 .username("admin")
                 .password(encoder().encode("admin"))
-                .roles("ADMIN", "USER")
+                .roles("ADMIN")
                 .build();
-        UserDetails user = User.builder()
-                .username("user")
-                .password(encoder().encode("user"))
-                .roles("USER")
-                .build();
-        return new InMemoryUserDetailsManager(admin, user);
+        return new InMemoryUserDetailsManager(admin);
     }
 
     @Bean
