@@ -26,12 +26,12 @@ public class RecordServiceImpl implements RecordService {
         this.operationRepository = operationRepository;
     }
 
-    public BigDecimal getOperationCost(Long operationId) {
+    private BigDecimal getOperationCost(Long operationId) {
         OperationType operation = operationRepository.getReferenceById(operationId);
         return operation.getCost();
     }
 
-    public BigDecimal getBalanceByUser(Long userId) {
+    private BigDecimal getBalanceByUser(Long userId) {
         UserBalance userBalance = userBalanceRepository.getByUserId(userId);
         return userBalance.getBalance();
     }
