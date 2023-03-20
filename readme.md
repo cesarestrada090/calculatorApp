@@ -1,3 +1,26 @@
+This Application have the required use cases.
+
+What this app have?
+
+Spring JPA (Insert Record into db after some business logic)
+Aspects (To know information about the request)
+2 Types of Authentication ( Basic Authentication and Mocked Oauth)
+
+Credentials:
+
+For Basic Auth:
+user: admin
+pass: admin
+
+For Mocked Oath
+Bearer token: b8920c1b-9f3d-4054-bef6-1da40ca8288e
+
+
+
+BD Script:
+
+
+
 CREATE TABLE calculator.`user` (
 id INT auto_increment NOT NULL,
 user_name varchar(100) NULL,
