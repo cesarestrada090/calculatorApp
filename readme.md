@@ -54,5 +54,5 @@ insert into operation (type) values ('division');
 insert into operation (type) values ('square_root');
 insert into operation (type) values ('random_string');
 
-insert into `user` (user_name,password,status) values('cesar','123',1);
+insert into `user` (user_name,password,status) values('testUser','123',1);
 insert into user_balance (user_id,balance) values (1,100);
