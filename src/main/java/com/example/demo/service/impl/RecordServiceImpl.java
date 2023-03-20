@@ -40,7 +40,7 @@ public class RecordServiceImpl implements RecordService {
     public Record saveRecord(Record record) throws IllegalAccessException {
         BigDecimal operationCost = getOperationCost(record.getOperationId());
         BigDecimal userBalance = getBalanceByUser(record.getUserId());
-        if(userBalance.compareTo(operationCost) > 0){
+        if(userBalance.compareTo(operationCost) >= 0){
             userBalanceRepository.updateBalanceByUserId(record.getUserId(),userBalance.subtract(operationCost));
             record.setAmount(operationCost);
             record.setUserBalance(userBalance.subtract(operationCost));
