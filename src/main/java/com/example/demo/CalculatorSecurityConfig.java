@@ -37,7 +37,8 @@ public class CalculatorSecurityConfig  {
             .disable()
             .cors()
             .and()
-            .httpBasic(Customizer.withDefaults()).addFilter(new OAuthEntryPointFilter());
+            .httpBasic(Customizer.withDefaults())
+            .addFilter(new OAuthEntryPointFilter());
         return http.build();
     }
 
