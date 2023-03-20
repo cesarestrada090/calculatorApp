@@ -22,6 +22,10 @@ testCostLowerThanBalance
 testCostGreaterThanBalance
 
 
+SPRING BOOT ACTUATOR AT PORT 8082
+
+
+
 BD Script:
 
 
