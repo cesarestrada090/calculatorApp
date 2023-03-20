@@ -4,6 +4,7 @@ What this app have?
 
 Spring JPA (Insert Record into db after some business logic)
 Aspects (To know information about the request)
+
 2 Types of Authentication ( Basic Authentication and Mocked Oauth)
 
 Credentials:
@@ -15,6 +16,10 @@ pass: admin
 For Mocked Oath
 Bearer token: b8920c1b-9f3d-4054-bef6-1da40ca8288e
 
+2 TEST HAS BEEN CREATED FOR BUSINESS LOGIC VALIDATION:
+
+testCostLowerThanBalance
+testCostGreaterThanBalance
 
 
 BD Script:
