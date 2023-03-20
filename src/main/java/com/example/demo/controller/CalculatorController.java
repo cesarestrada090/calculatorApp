@@ -27,8 +27,8 @@ public class CalculatorController {
         } catch (IllegalAccessException e){
             return new ResponseEntity<>("User’s balance isn’t enough to cover the request cost", HttpStatus.BAD_REQUEST);
         } catch (Exception e){
-            return new ResponseEntity<>("There was a problem executing your request"+e.getMessage(), HttpStatus.INTERNAL_SERVER_ERROR);
+            return new ResponseEntity<>("There was a problem executing your request", HttpStatus.INTERNAL_SERVER_ERROR);
         }
-        return ResponseEntity.ok().body("Operation executed successfully");
+        return ResponseEntity.ok().body("Operation executed successfully, Current Balance:" +record.getUserBalance());
     }
 }
