@@ -1,5 +1,6 @@
 package com.example.demo;
 
+import com.example.demo.filter.OAuthEntryPointFilter;
 import org.springframework.context.annotation.Bean;
 import org.springframework.context.annotation.Configuration;
 import org.springframework.security.config.Customizer;
@@ -12,6 +13,8 @@ import org.springframework.security.provisioning.InMemoryUserDetailsManager;
 import org.springframework.security.web.SecurityFilterChain;
 @Configuration
 public class CalculatorSecurityConfig  {
+
+    OAuthEntryPointFilter oAuthEntryPointFilter;
     @Bean
     public PasswordEncoder encoder(){
         return new BCryptPasswordEncoder();
@@ -34,7 +37,7 @@ public class CalculatorSecurityConfig  {
             .disable()
             .cors()
             .and()
-            .httpBasic(Customizer.withDefaults());
+            .httpBasic(Customizer.withDefaults()).addFilter(new OAuthEntryPointFilter());
         return http.build();
     }
 
