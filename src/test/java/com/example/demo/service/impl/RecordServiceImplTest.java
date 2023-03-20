@@ -67,7 +67,7 @@ class RecordServiceImplTest {
     }
 
     @Test
-    void testFindById() throws IllegalAccessException {
+    void testCostGreaterThanBalance(){
         // Setup our record to save
         Record record = new Record();
         record.setAmount(new BigDecimal(33));
@@ -90,6 +90,35 @@ class RecordServiceImplTest {
         IllegalAccessException thrown = Assertions.assertThrows(IllegalAccessException.class, () -> {
             recordService.saveRecord(record);
         }, "User’s balance isn’t enough to cover the request cost");
-
     }
+
+    @Test
+    void testCostLowerThanBalance() throws IllegalAccessException {
+        // Setup our record to save
+        Record record = new Record();
+        record.setAmount(new BigDecimal(33));
+        record.setId(1l);
+
+        //Configure mock User Balance with 50
+        UserBalance userBalance = new UserBalance();
+        userBalance.setBalance(new BigDecimal(50));
+        userBalance.setId(1l);
+        doReturn(userBalance).when(userBalanceRepository).getByUserId(any());
+
+
+        //Set Operation cost of 10
+        OperationType operationType = new OperationType();
+        operationType.setId(1l);
+        operationType.setCost(new BigDecimal(10));
+        doReturn(operationType).when(operationRepository).getReferenceById(any());
+
+        // "Illegal Access Exception should be thrown because balance is not greater than operation cost"
+        doNothing().when(userBalanceRepository).updateBalanceByUserId(any(),any());
+
+        recordService.saveRecord(record);
+        // User balance should by decreased by 10
+        assertEquals(record.getUserBalance(), new BigDecimal(40));
+    }
+
+
 }
